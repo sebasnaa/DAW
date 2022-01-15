@@ -1,0 +1,65 @@
+
+
+.container::before{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.tipo-productos {
+    text-align: center;
+}
+
+
+
+.menu-bebidas {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.producto-bebida-1{
+    border: 1px solid gray ;
+    border-radius: 10px;
+    
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+
+    display: flex;
+    height: 15%;
+    width: 40%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.producto-imagenContainer {
+    width: 10%;
+}
+
+.producto-imagenContainer img{
+    max-width: 100%;
+    border-radius: 45%;
+}
+
+.detalles-producto{
+    width: 70%;
+    
+}
+
+
+.nombre-producto{
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    
+}
+.precio-producto {
+    font-size: large;
+}
+
+.boton-producto{
+    margin-left: 70%;
+}
+
+
+
+

@@ -1,0 +1,231 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/redes_sociales_menu.eot?p02olc');
+    src:  url('../fonts/redes_sociales_menu.eot?p02olc#iefix') format('embedded-opentype'),
+      url('../fonts/redes_sociales_menu.ttf?p02olc') format('truetype'),
+      url('../fonts/redes_sociales_menu.woff?p02olc') format('woff'),
+      url('../fonts/redes_sociales_menu.svg?p02olc#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 2.2;
+    padding: 5px;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-instagram:before {
+    content: "\e902";
+  }
+
+  .icon-facebook:before {
+    content: "\e903";
+  }
+
+.icon-youtube:before {
+    content: "\1f54f";
+    font-size: 0.9em;
+    color: rgb(255, 255, 255);
+  }
+
+
+:root{
+    --colorP:#38454d;
+    --colorP:#f0c11e;
+    --colorP:#ffba00;
+    --colorP:#ddbf74;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color:black;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    
+    background-color: var(--colorP);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    max-width: 1400px;
+    height: 70vh;
+    width: 100vw;
+    position: relative;
+    box-shadow: 0 0 17pc rgb(207, 133, 133);
+    margin: 5% auto;
+    justify-content: space-between;
+    
+
+}
+
+.container::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+
+}
+
+.container .fondo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-size: cover;
+    object-fit: cover;
+}
+
+
+
+
+.boton {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    padding: 13px 20px;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serifs;
+    font-weight: bold;
+    font-size: 0.9em;
+    background-color: #ffba00;
+    text-decoration: none;
+    
+}
+
+.boton:hover {
+    box-shadow: 0 0 15px #000;
+}
+
+
+
+
+
+
+.container .menu{
+    margin-top: -18px;
+    height: 65px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    color: #fff;
+    margin-bottom: 4%;
+}
+
+.container .menu ul {
+    height: 100%;
+
+}
+
+.container .menu ul li{
+    border-bottom: 1px solid #fff;
+    list-style: none;
+    margin: 0 30px;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    margin: 12px;
+}
+
+.boton-nav {
+    background-color:#008CBA; 
+    background-color: #fff;
+    color: #000;
+    padding: 15px 28px;
+    font-size: 16px;
+    border-radius: 12px;
+    margin-left: 5px;
+}
+
+.boton-nav:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.3),  0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.menu .logo a{
+    color: #f0c11e;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom-color: #f0c11e;
+
+}
+
+.informacion-web {
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.informacion-web h1,h2{
+    font-family: fantasy;
+    color: #fff;
+
+}
+
+.informacion-web h1{
+    position: relative;
+    left: 15%;
+    margin-bottom: -50px;
+    width: 60%;
+    margin-top: 10%;
+}
+
+.informacion-web h2{
+    font-size: 4em;
+}
+
+.informacion-web .parrafo {
+    width: 380px;
+    color: #fff;
+    text-align: justify;
+}
+
+.informacion-web p {
+    padding-left: 10px;
+    border-left: 7px solid #fff;
+}
+
+.redes-sociales {
+    display: flex;
+    
+}
+
+.redes-sociales li{
+    width: 32px;
+    height: 32px;
+    color: #ccc;
+    margin: 5px 3px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+
+.boton-cerrar-sesion{
+    background-color: #6F6F6F;
+}
