@@ -7,13 +7,6 @@
 <%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
-    System.out.println("Usuario no log");
-    if (usuarioSesion != null) {
-        System.out.println(usuarioSesion);
-    }
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +37,17 @@
             <nav class="menu">
                 <ul class="flex">
                     <li class="boton-nav">Inicio</li>
-                    <li class="boton-nav">Reservas</li>
                     <li class="boton-nav"><a href="login">Acceso</a></li>
                     <li class="boton-nav">Contacto</li>
-                    <li class="boton-nav boton-cerrar-sesion"><a href="loginOut">Cerrar Sesion</a></li>
-                    <!--<li><a href="agregarBebida.html"> Agregar Bebida </a></li>-->
+                    <!--<li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li>-->
+                    <%                  
+                        Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
+                        if (usuarioSesion != null) {
+                           %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
+                        }
+
+                    %>
+
 
 
 
@@ -76,8 +75,11 @@
 
         </div>
 
+        <!--<script src="js/carroProductos.js"></script>-->
+
 
     </body>
+
 
 
 

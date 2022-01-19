@@ -1,5 +1,26 @@
 
 
+
+
+function correoValido() {
+    correoUsuario = document.querySelector("#direccionUsuario").value;
+    $.ajax({
+        url: '/Bar/login/comprobar',
+        type: 'POST',
+        data: {correo: correoUsuario},
+        success: function (resultText) {
+            const mess = document.getElementById("mensajeCorreoExistente");
+            mess.innerHTML = resultText;
+        },
+        error: function (jqXHR, exception) {
+            console.log('Error!!');
+
+        }
+    });
+
+
+}
+
 function mandarMensaje(formElement, type, message) {
     const messageElement = formElement.querySelector(".formulario_mensaje");
 
@@ -42,7 +63,6 @@ function validarNombreCorreo() {
 
 
 }
-
 
 
 
@@ -92,16 +112,24 @@ function validarFormularioLogin(evento) {
 function validarFormularioCreacionCuenta(evento) {
     //comprobamos que no sean empty
     evento.preventDefault();
+
+    let comprobacionCorreo = document.getElementById('mensajeCorreoExistente');
+    if (comprobacionCorreo.innerText.length > 0) {
+        return;
+    }
+
     var usuario = document.getElementById('nombreUsuario');
     if (usuario.value.length == 0) {
         mostrarMensajeError(usuario, "Nombre en blanco");
         return;
     }
+
     var correo = document.getElementById('direccionUsuario');
     if (correo.value.length == 0) {
         mostrarMensajeError(correo, "Correo en blanco");
         return;
     }
+
 
     if (!ValidarContraseñaiguales()) {
         return;

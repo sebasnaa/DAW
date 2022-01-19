@@ -8,6 +8,7 @@ package servlet;
 import DAO.UsuarioDAO;
 import beans.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -118,6 +119,18 @@ public class login extends HttpServlet {
                 }
 
 //         
+                break;
+
+            case "/Bar/login/comprobar":
+
+                String entrada = request.getParameter("correo");
+                response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+                response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+                if(control.comprobarUsuariounico(entrada)){
+                    response.getWriter().write("existe correo/usuario");
+                }
+                
+
                 break;
 
             default:

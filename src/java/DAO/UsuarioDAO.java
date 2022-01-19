@@ -47,7 +47,7 @@ public class UsuarioDAO {
             if (!existe) {
                 //mandar mensaje
                 return null;
-            } else{
+            } else {
                 System.out.println("Existe usuario correcrto log");
                 String nombreDAO = rs.getString("nombre");
                 String correoDAO = rs.getString("correo");
@@ -92,6 +92,31 @@ public class UsuarioDAO {
             System.out.println("Mal usuario");
             return false;
         }
+    }
+
+    public boolean comprobarUsuariounico(String correoUsuario) throws NamingException {
+
+        System.out.println(correoUsuario + " ");
+
+        int estadoCreacionCuenta = 0;
+        PreparedStatement pr = null;
+        ResultSet rs = null;
+        boolean state = false;
+        try {
+            conn = getRecurso().getConnection();
+            pr = conn.prepareStatement("SELECT * FROM USUARIOS WHERE CORREO = ?");
+            pr.setString(1, correoUsuario);
+            rs = pr.executeQuery();
+
+            state = rs.next();
+            pr.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Fallo en comprobacion");
+        }
+
+        
+        return state;
     }
 
     private DataSource getRecurso() throws NamingException {

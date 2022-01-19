@@ -7,6 +7,10 @@
 
 
 
+<%@page import="java.sql.Array"%>
+<%@page import="com.sun.xml.rpc.processor.modeler.nometadata.NoMetadataModeler"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import="beans.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
@@ -17,7 +21,9 @@
 
     ArrayList<Bebida> lista = (ArrayList<Bebida>) request.getAttribute("bebidas");
     Iterator<Bebida> itBebida = lista.iterator();
-
+    Gson g = new Gson();
+//    String salida = g.toJson(lista);
+//    System.out.println(salida);
     Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
     boolean usuarioLogeado = false;
     if (usuarioSesion != null) {
@@ -53,7 +59,6 @@
             <nav class="menu">
                 <ul class="flex">
                     <li class="boton-nav" ><a href="http://localhost:8080/Bar">Inicio</a></li>
-                    <li class="boton-nav">Reservas</li>
                     <li class="boton-nav"><a href="http://localhost:8080/Bar/login">Acceso</a></li>
                     <li class="boton-nav"> Contacto</li>
                 </ul>
@@ -66,7 +71,14 @@
                     <li class="boton-eleccion-menus"><a href="../menu/comidas">Comida</a></li>
                     <li class="boton-eleccion-menus">Cocteles</li>
                     <li class="boton-eleccion-menus">Cafes</li>
-                    <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" >Añadir producto</li>
+                        <%
+                            if (usuarioSesion != null) {
+                        %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" >Añadir producto</li> <%
+                            }
+
+                        %>
+
+
                 </ul>
             </nav>
 
@@ -80,13 +92,31 @@
 
 
 
-                <div class="elementos-menu">
+                <div class="elementos-menu" id="elementos-menu">
 
-                    <%
-                        while (itBebida.hasNext()) {
+                    <%                        while (itBebida.hasNext()) {
                             Bebida b = itBebida.next();
                             String imagen = "../images/productos/bebidas/" + b.getNombre() + ".jpg";
                             imagen = imagen.replaceAll(" ", "");
+
+                            String StringJsonBebida = g.toJson(b);
+
+//                            System.out.println(StringJsonBebida);
+                            JSONObject jsonObj = new JSONObject();
+                            jsonObj.put("id", b.getId());
+                            jsonObj.put("nombre", b.getNombre());
+                            jsonObj.put("precio", b.getPrecio());
+                            jsonObj.put("descripcion", b.getDescripcion());
+                            System.out.println("valor n " + jsonObj.toJSONString());
+
+                            String nombre = b.getNombre();
+                            double p = b.getPrecio();
+                            String desc = b.getDescripcion();
+//                        Bebida bebidaS = g.fromJson(StringJsonBebida, Bebida.class);
+//                            System.out.println(" bebida mod "+ bebidaS.getNombre());
+//                  {'id':0,"precio":2.0,'descripcion':"Bebida refrescante carbonatada sabor naranja",'nombre':"Kas Naranja"}
+//{'id': 0, 'precio': 2.0, 'descripcion': 'Bebida refrescante carbonatada sabor naranja', 'nombre': 'Kas Naranja'}
+//{ 'one': 1, 'two': 2, 'three': 3 }
                     %>
 
                     <div class="item-menu">
@@ -101,11 +131,10 @@
                                 <p> <%= b.getDescripcion()%> </p>
                                 <div class="botones-productos">
 
-                                    <% if(usuarioLogeado) {  %>                           
+                                    <% if (usuarioLogeado) {  %>                           
                                     <button class="botones-productos-editar" >Editar</button>
-                                    <% } %>
-                                    <button class="botones-productos-add">añadir</button>
-
+                                    <% }%>
+                                    <button class="botones-productos-add" id="botonAdd" onclick="pp('<%=nombre%>', '<%=p%>', '<%=desc%>');" >Añadir</button>
                                 </div>
 
 
@@ -113,14 +142,62 @@
                         </div>               
                     </div>
 
-
                     <% }%>
 
                 </div>
 
             </div>
+                    
+                     <button class="botones-productos-add" id="mostrar" onclick="mostrar();" >Show carrito</button>
 
         </div>
+
+
+
+        <script>
+
+            function $(selector) {
+                return document.querySelector(selector);
+            }
+
+            function pp(nombre, precio, des) {
+
+//                console.log(nombre);
+//                console.log(precio);
+//                console.log(des);
+//                items = {'nombre': nombre, 'precio': precio, 'descripcion': des};
+
+
+
+                var carrito = JSON.parse(localStorage.getItem("carrito"));
+
+                if (carrito == null)
+                    carrito = [];
+                var nombre = nombre;
+                var precio = precio;
+                var entry = {
+                    "nombre": nombre,
+                    "precio": precio
+                };
+                localStorage.setItem("entry", JSON.stringify(entry));
+                carrito.push(entry);
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+            }
+
+            function mostrar(){
+                 let carrito = JSON.parse(localStorage.getItem("carrito"));
+                console.log(carrito[0].title);
+            }
+
+
+
+
+
+        </script>
+
+
+
+
 
 
     </body>

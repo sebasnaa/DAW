@@ -19,16 +19,16 @@
 
     <body>
         <center>
-            <% // Usuario currentUser = (Usuario) (session.getAttribute("usuarioSesion"));%>
-             
-            
-            
-            <% 
+
+
+
+
+            <%
                 Usuario usuarioSesion = (Usuario) (session.getAttribute("usuarioSesion"));
             %>
-             Welcome<%= usuarioSesion.getNombre() %>
-            
-            
+            Welcome <%= usuarioSesion.getNombre()%>
+
+
         </center>
     </body>
 

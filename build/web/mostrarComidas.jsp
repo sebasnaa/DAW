@@ -56,7 +56,6 @@
             <nav class="menu">
                 <ul class="flex">
                     <li class="boton-nav" ><a href="http://localhost:8080/Bar">Inicio</a></li>
-                    <li class="boton-nav">Reservas</li>
                     <li class="boton-nav"><a href="http://localhost:8080/Bar/login">Acceso</a></li>
                     <li class="boton-nav"> Contacto</li>
                 </ul>
@@ -68,6 +67,12 @@
                     <li class="boton-eleccion-menus">Comida</li>
                     <li class="boton-eleccion-menus">Cocteles</li>
                     <li class="boton-eleccion-menus">Cafes</li>
+                     <%
+                            if (usuarioSesion != null) {
+                        %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" >Añadir producto</li> <%
+                        }
+
+                        %>
                 </ul>
             </nav>
 

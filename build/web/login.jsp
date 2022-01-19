@@ -4,6 +4,7 @@
     Author     : sebas
 --%>
 
+<%@page import="beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 
@@ -15,6 +16,7 @@
 
 
 %>
+
 
 
 
@@ -41,9 +43,20 @@
         <nav class="menu">
             <ul class="flex">
                 <li class="boton-nav" ><a href="http://localhost:8080/Bar">Inicio</a></li>
-                <li class="boton-nav">Reservas</li>
                 <li class="boton-nav">Acceso</li>
                 <li class="boton-nav"> Contacto</li>
+
+                <%                    
+                    Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
+                    System.out.println("Usuario no log");
+                    String cerrarBoton = "";
+                    if (usuarioSesion != null) {
+                %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
+                               }
+
+                    %>
+
+
             </ul>
         </nav>
     </div>
@@ -93,18 +106,18 @@
 
             <div class="formulario_datos_entrada_grupo">
                 <input type="text"  onchange="eliminarMensajesErrores()" id="nombreUsuario" class="formulario_entrada" name="nombreUsuario" autofocus placeholder="Usuario">
-                    <div class="formulario_mensaje-error-entrada"></div>
+                <div class="formulario_mensaje-error-entrada"></div>
             </div>
 
             <div class="formulario_datos_entrada_grupo">
-                <input type="text" id="direccionUsuario" onchange="eliminarMensajesErrores()" class="formulario_entrada" name="correoUsuario" autofocus
+                <input type="text" id="direccionUsuario" oninput="correoValido()" onchange="eliminarMensajesErrores()" class="formulario_entrada" name="correoUsuario" autofocus
                        placeholder="Direccón de correo">
-                    <div class="formulario_mensaje-error-entrada"></div>
+                <div class="formulario_mensaje-error-entrada"></div>
             </div>
 
             <div class="formulario_datos_entrada_grupo">
                 <input type="password" id="passwordPrimera" class="formulario_entrada"  autofocus placeholder="Contraseña">
-                    <div class="formulario_mensaje-error-entrada"></div>
+                <div class="formulario_mensaje-error-entrada"></div>
             </div>
 
             <div class="formulario_datos_entrada_grupo">
@@ -112,25 +125,27 @@
                 <div class="formulario_mensaje-error-entrada"></div>
             </div>
 
-            <button class="formulario_boton" id="botonCrer" type="submit">Crear</button>
+            <p id ="mensajeCorreoExistente" ></p>
+
+
+            <!--<button class="formulario_boton" id="botonCrer" type="submit">Crear</button>-->
+            <button class="formulario_boton" id="botonCrear" type="submit">Crear</button>
+
 
             <p class="formulario_texto">
-                <a class="formulario_link" id="EnlaceAcceso">Acceder a Cuenta</a>
+                <a class="formulario_link" id="EnlaceAcceso"  >Acceder a Cuenta</a>
             </p>
+
         </form>
     </div>
 
-
+    <script src="js/jQuery.js"></script>
     <script src="js/logginCreacionCuenta.js"></script>
 
 
-    <script>
-
-                   
 
 
 
-    </script>
 
 
     <!--<script src="js/controlAjaxLogin.js"></script>-->

@@ -35,14 +35,21 @@ public class loginOut extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        
         HttpSession session = request.getSession();
         Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
         session.removeAttribute("usuarioSesion");
         
+        
+        
         String salida = "Logout correcto";
-        request.setAttribute("estadoLogOut",salida );
+        request.setAttribute("estadoLogOut", salida);
+      
         request.getRequestDispatcher("/logOut.jsp").forward(request, response);
+        String text = "some text";
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+        response.getWriter().write(text);
 
     }
 
