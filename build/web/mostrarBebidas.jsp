@@ -134,7 +134,7 @@
                                     <% if (usuarioLogeado) {  %>                           
                                     <button class="botones-productos-editar" >Editar</button>
                                     <% }%>
-                                    <button class="botones-productos-add" id="botonAdd" onclick="pp('<%=nombre%>', '<%=p%>', '<%=desc%>');" >Añadir</button>
+                                    <button class="botones-productos-add" id="botonAdd" onclick="pp('<%=nombre%>', '<%=p%>');" >Añadir</button>
                                 </div>
 
 
@@ -160,14 +160,7 @@
                 return document.querySelector(selector);
             }
 
-            function pp(nombre, precio, des) {
-
-//                console.log(nombre);
-//                console.log(precio);
-//                console.log(des);
-//                items = {'nombre': nombre, 'precio': precio, 'descripcion': des};
-
-
+            function pp(nombre, precio) {
 
                 var carrito = JSON.parse(localStorage.getItem("carrito"));
 
@@ -177,7 +170,8 @@
                 var precio = precio;
                 var entry = {
                     "nombre": nombre,
-                    "precio": precio
+                    "precio": precio,
+                    "imagen": nombre
                 };
                 localStorage.setItem("entry", JSON.stringify(entry));
                 carrito.push(entry);

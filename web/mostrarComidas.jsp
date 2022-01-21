@@ -67,10 +67,9 @@
                     <li class="boton-eleccion-menus">Comida</li>
                     <li class="boton-eleccion-menus">Cocteles</li>
                     <li class="boton-eleccion-menus">Cafes</li>
-                     <%
-                            if (usuarioSesion != null) {
+                        <%                         if (usuarioSesion != null) {
                         %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" >Añadir producto</li> <%
-                        }
+                            }
 
                         %>
                 </ul>
@@ -92,7 +91,9 @@
                             Comida c = itComida.next();
                             String imagen = "../images/productos/comidas/" + c.getNombre() + ".png";
                             imagen = imagen.replaceAll(" ", "");
-                            System.out.println("Comida " + imagen);
+                            String nombre = c.getNombre();
+                            double p = c.getPrecio();
+                            String desc = c.getDescripcion();
                     %>
 
                     <div class="item-menu">
@@ -107,11 +108,11 @@
                                 <p> <%= c.getDescripcion()%> </p>
                                 <div class="botones-productos">
 
-                                    <%        if(usuarioLogeado){  %>                           
+                                    <%        if (usuarioLogeado) {  %>                           
                                     <button class="botones-productos-editar" >Editar</button>
-                                    <% } %>
-                                    <button class="botones-productos-add" >añadir</button>
-                                    
+                                    <% }%>
+                                    <button class="botones-productos-add" onclick="pp('<%=nombre%>', '<%=p%>');" >añadir</button>
+
 
                                 </div>
 
@@ -129,7 +130,26 @@
 
         </div>
 
-       
+        <script>
+            function pp(nombre, precio) {
+
+                var carrito = JSON.parse(localStorage.getItem("carrito"));
+
+                if (carrito == null)
+                    carrito = [];
+                var nombre = nombre;
+                var precio = precio;
+                var entry = {
+                    "nombre": nombre,
+                    "precio": precio,
+                    "imagen": nombre
+                };
+                localStorage.setItem("entry", JSON.stringify(entry));
+                carrito.push(entry);
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+            }
+        </script>
+
 
     </body>
 </html>

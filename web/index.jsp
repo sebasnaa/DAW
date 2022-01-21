@@ -39,14 +39,15 @@
                     <li class="boton-nav">Inicio</li>
                     <li class="boton-nav"><a href="login">Acceso</a></li>
                     <li class="boton-nav">Contacto</li>
-                    <!--<li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li>-->
-                    <%                  
+                    <li class="boton-nav"><a href="carritoDos.jsp">Carrito</a></li>
+
+                    <%
                         Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
                         if (usuarioSesion != null) {
-                           %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
-                        }
+                    %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
+                               }
 
-                    %>
+                        %>
 
 
 
@@ -75,7 +76,7 @@
 
         </div>
 
-        <!--<script src="js/carroProductos.js"></script>-->
+        
 
 
     </body>

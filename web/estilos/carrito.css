@@ -1,0 +1,202 @@
+
+
+
+.container {
+    height: fit-content;
+}
+
+.menu {
+    margin-bottom: 5px;
+}
+
+.container::before{
+
+    background-color: rgb(255, 255, 255);
+
+}
+
+.container .fondo-menu{
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-size: cover;
+    object-fit: cover;
+}
+
+a:visited{
+    color: #000;
+}
+
+.boton-eleccion-menus {
+    background-color:#008CBA; 
+    background-color: #ffba00;;
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+    color:#000;
+}
+
+.boton-eleccion-menus:hover{
+    background-color: #ffba00;
+    box-shadow: 0 0 15px #000;
+    transform: scale(0.95);
+}
+
+
+.menu-productos {
+    font-size: 14px;
+    margin-top: 2%;
+}
+
+.tipo-menu {
+    padding-bottom: 1em;
+    padding-top: 1em;
+    margin: 0 5%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    border-top: 2px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.tipo-menu h2 {
+    text-align: center;
+    color: black;
+    margin: 0;
+}
+
+
+
+.nav-tipos-menus ul {
+    padding: 0;
+    display: flex;
+    margin: 0 auto;
+    gap: 2em;
+    list-style: none;
+}
+
+.boton-nav {
+    background-color:#008CBA; 
+    background-color: #fff;
+    color: #000;
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.boton-nav:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.3),  0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.elementos-menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+    padding: 1.5em 0;
+    margin-right: 1%;
+}
+
+.item-menu {
+    display: flex;
+    margin-right: 110px;
+}
+
+.item-menu-image {
+
+    height: 80px;
+    flex-shrink: 0;
+    object-fit: cover;
+
+}
+
+.item-menu-descripcion {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-item-titulo {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.menu-item-precio {
+    margin-right: 3%;
+}
+
+
+.menu-item-nombre {
+    margin-right: 1.5em;
+}
+
+
+.descripcion-boton button {
+    height: 20px;
+
+}
+
+
+.descripcion-boton {
+
+    display: flex;  
+    justify-content: space-between;
+    gap: 1.5em; 
+    align-items: flex-end;
+
+
+}
+
+.boton_x{
+    background-color: red;
+    width: 35px;
+    height: 35px;
+    margin: auto;
+}
+
+.precio-total{
+    display: flex;
+    justify-content: end;
+    margin-right: 60px;
+}
+
+
+@media screen and (min-width: 992px){
+    .menu-productos{
+        font-size: 16px;
+
+    }
+
+    .elementos-menu{
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .item-menu-image {
+/*        width: 125px;
+        height: 125px;
+        object-fit: cover;*/
+
+        height: 125px;
+        flex-shrink: 0;
+        object-fit: cover;
+
+    }
+}
+
+
+
+
+.elementos-menu {
+    /* position: absolute;
+     height: 100%;
+     width: 100%;
+     z-index: -1;
+     background-size: cover;
+     object-fit: cover;*/
+
+
+
+}
+
