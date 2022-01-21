@@ -155,6 +155,7 @@ function eliminarMensajesErrores() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    
     const formularioAcceso = document.querySelector("#Acceso");
     const formularioCrearCuenta = document.querySelector("#CrearCuenta");
     document.querySelector("#enlaceCrearCuenta").addEventListener("click", e => {

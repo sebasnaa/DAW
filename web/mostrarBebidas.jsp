@@ -98,7 +98,9 @@
                             Bebida b = itBebida.next();
                             String imagen = "../images/productos/bebidas/" + b.getNombre() + ".jpg";
                             imagen = imagen.replaceAll(" ", "");
-
+                            
+                            String nombreObjetoClear = b.getNombre().replaceAll(" ", "");
+                            
                             String StringJsonBebida = g.toJson(b);
 
 //                            System.out.println(StringJsonBebida);
@@ -117,7 +119,7 @@
 //                  {'id':0,"precio":2.0,'descripcion':"Bebida refrescante carbonatada sabor naranja",'nombre':"Kas Naranja"}
 //{'id': 0, 'precio': 2.0, 'descripcion': 'Bebida refrescante carbonatada sabor naranja', 'nombre': 'Kas Naranja'}
 //{ 'one': 1, 'two': 2, 'three': 3 }
-                    %>
+%>
 
                     <div class="item-menu">
 
@@ -132,23 +134,41 @@
                                 <div class="botones-productos">
 
                                     <% if (usuarioLogeado) {  %>                           
-                                    <button class="botones-productos-editar" >Editar</button>
+                                    <button class="botones-productos-editar" onclick="mostrarForm(' <%= b.getNombre() %>' );" >Editar</button>
                                     <% }%>
                                     <button class="botones-productos-add" id="botonAdd" onclick="pp('<%=nombre%>', '<%=p%>');" >Añadir</button>
                                 </div>
 
 
                             </div>
-                        </div>               
+                        </div>  
+
+                                               
+                        <form class="formulario_editar_oculto" id="formulario_editar_<%=nombreObjetoClear%>" >
+                            <input type="text" name="nombreProdcuto" autofocus placeholder="Nombre producto">
+                            <input type="text" name="precio" autofocus placeholder="Precio">
+                            <input type="text" name="descripcionProducto" autofocus placeholder="Descripcion producto">
+                            <div class="botones-edicion" >
+                                <button class="boton-envia-editar" id="botones-edicion-cancelar" onclick="" >Cancelar</button>
+                                <button class="boton-envia-editar" id="botones-edicion-enviar" onclick="" >Guardar</button>
+
+                            </div>
+                        </form>
+ 
+
                     </div>
+
+
+
+
 
                     <% }%>
 
                 </div>
 
             </div>
-                    
-                     <button class="botones-productos-add" id="mostrar" onclick="mostrar();" >Show carrito</button>
+
+            <button class="botones-productos-add" id="mostrar" onclick="mostrar();" >Show carrito</button>
 
         </div>
 
@@ -178,9 +198,19 @@
                 localStorage.setItem("carrito", JSON.stringify(carrito));
             }
 
-            function mostrar(){
-                 let carrito = JSON.parse(localStorage.getItem("carrito"));
+            function mostrar() {
+                let carrito = JSON.parse(localStorage.getItem("carrito"));
                 console.log(carrito[0].title);
+            }
+            
+            function mostrarForm(nombre){
+                console.log(nombre);
+                nombre = nombre.replaceAll(' ', '');
+                let id = 'formulario_editar_'+nombre;
+              const formulario = document.getElementById(id);
+              formulario.classList.remove("formulario_editar_oculto");
+              formulario.classList.add("formulario_editar");
+                      
             }
 
 
