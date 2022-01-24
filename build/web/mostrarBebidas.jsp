@@ -100,7 +100,6 @@
                             
                             String nombreObjetoClear = b.getNombre().replaceAll(" ", "");
                             
-                            System.out.println(nombreObjetoClear);
                             
                             String nombre = b.getNombre();
                             double p = b.getPrecio();
@@ -224,9 +223,7 @@
                 var nombreMod = document.querySelector('.nombreProductoEditar_' + nombreBusqueda).value;
                 var precioMod = document.querySelector('.precioProductoEditar_' + nombreBusqueda).value;
                 var desMod = document.querySelector('.descProductoEditar_' + nombreBusqueda).value;
-//                var nombreO = document.querySelector("nombre" + nombreBusqueda).value;
-         
-                
+      
                 $.ajax({
                     url: '/Bar/agregarProducto/bebida',
                     type: 'POST',
@@ -234,15 +231,8 @@
                     success: function (resultText) {
                         
                         if (resultText === "mod") {
+                            location.reload();
 //                            mostrarForm(nombreBusqueda);
-                            
-                            
-                            document.getElementById("nombre" + nombreBusqueda).innerText = nombreMod;
-                            document.getElementById("precio" + nombreBusqueda).innerText = precioMod + ' € ';
-                            document.getElementById("descripcion" + nombreBusqueda).innerText = desMod;
-                            var nombreFoto = nombreMod.replaceAll(' ', '');
-                            document.getElementById("imagen" + nombreBusqueda).src = "../images/productos/bebidas/" + nombreFoto + ".jpg";
-                            
 //                            document.getElementById("nombre" + nombreBusqueda).innerText = nombreMod;
 //                            document.getElementById("precio" + nombreBusqueda).innerText = precioMod + ' € ';
 //                            document.getElementById("descripcion" + nombreBusqueda).innerText = desMod;
