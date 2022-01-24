@@ -106,7 +106,7 @@ public class login extends HttpServlet {
                 estadoCreacionCuenta = 0;
                 String nombreUsuarioLog = request.getParameter("nombreUsuarioLogin");
                 String passwordUsuarioLog = request.getParameter("passwordUsuarioLogin");
-                System.out.println(nombreUsuarioLog + " " + passwordUsuarioLog);
+//                System.out.println(nombreUsuarioLog + " " + passwordUsuarioLog);
 
                 Usuario usuarioSession = control.login(nombreUsuarioLog, passwordUsuarioLog);
 
@@ -114,7 +114,7 @@ public class login extends HttpServlet {
                     session.setAttribute("usuarioSesion", usuarioSession);
                     request.getRequestDispatcher("/validUserlogin.jsp").forward(request, response);
                 } else {
-                    System.out.println("Entra en usuario no bueno");
+//                    System.out.println("Entra en usuario no bueno");
                     request.getRequestDispatcher("/invalidUserlogin.jsp").forward(request, response);
                 }
 

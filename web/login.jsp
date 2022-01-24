@@ -48,7 +48,7 @@
 
                 <%                    
                     Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
-                    System.out.println("Usuario no log");
+//                    System.out.println("Usuario no log");
                     String cerrarBoton = "";
                     if (usuarioSesion != null) {
                 %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%

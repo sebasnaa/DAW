@@ -22,7 +22,7 @@
     Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
     boolean usuarioLogeado = false;
     if (usuarioSesion != null) {
-        System.out.println(usuarioSesion);
+//        System.out.println(usuarioSesion);
         if (usuarioSesion.getRol().equals("admin")) {
             usuarioLogeado = true;
         }
@@ -58,6 +58,7 @@
                     <li class="boton-nav" ><a href="http://localhost:8080/Bar">Inicio</a></li>
                     <li class="boton-nav"><a href="http://localhost:8080/Bar/login">Acceso</a></li>
                     <li class="boton-nav"> Contacto</li>
+                      <li class="boton-nav"><a href="http://localhost:8080/Bar/carritoDos.jsp">Carrito</a></li>
                 </ul>
             </nav>
 

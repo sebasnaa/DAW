@@ -54,7 +54,7 @@ public class menu extends HttpServlet {
 
         String nombreTabla = request.getPathInfo();
         String contextPath = request.getContextPath();
-        System.out.println("contenido " + contextPath);
+//        System.out.println("contenido " + contextPath);
 
         //
         Connection conn;
@@ -75,7 +75,6 @@ public class menu extends HttpServlet {
                 while (rs.next()) {
                     double precio = rs.getDouble("precio");
                     Bebida bebida = new Bebida(precio, rs.getString("descripcion"), rs.getString("nombre"));
-                    System.out.println(bebida);
                     bebidas.add(bebida);
                 }
 
@@ -92,7 +91,6 @@ public class menu extends HttpServlet {
                 while (rs.next()) {
                     double precio = rs.getDouble("precio");
                     Comida comida = new Comida(precio, rs.getString("descripcion"), rs.getString("nombre"));
-                    System.out.println(comida);
                     comidas.add(comida);
                 }
 
@@ -100,6 +98,7 @@ public class menu extends HttpServlet {
                 salida = "../mostrarComidas.jsp";
                 break;
         }
+        st.close();
         conn.close();
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(salida);
