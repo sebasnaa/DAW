@@ -27,7 +27,7 @@ body {
     flex-direction: column;
 }
 
-.containerLogin {
+formulario_boton.containerLogin {
     width: 400px;
     max-width: 400px;
     margin: 1rem;

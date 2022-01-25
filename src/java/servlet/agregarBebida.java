@@ -53,7 +53,6 @@ public class agregarBebida extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String precio_str = request.getParameter("precio");
         double precio = Double.parseDouble(precio_str);
-
         String descripcion = request.getParameter("descripcion");
 
         if (precio <= 0.0) {
@@ -84,22 +83,7 @@ public class agregarBebida extends HttpServlet {
         }
         
 
-        try (PrintWriter out = response.getWriter()) {
-
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet agregarBebida</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet agregarBebida at " + request.getContextPath() + "</h1>");
-
-            out.print(msg);
-            out.print("<button> <a href=\"index.html\">Volver</a> </button>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+     
 
         ps.close();
         conn.close();

@@ -37,13 +37,15 @@ public class loginOut extends HttpServlet {
 
         HttpSession session = request.getSession();
         Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
+        
+        String nombreUsuaiorLogOut = usuarioSesion.getNombre();
         session.removeAttribute("usuarioSesion");
         
         
         
         String salida = "Logout correcto";
         request.setAttribute("estadoLogOut", salida);
-      
+        request.setAttribute("nombre", nombreUsuaiorLogOut);
         request.getRequestDispatcher("/logOut.jsp").forward(request, response);
         String text = "some text";
 

@@ -146,8 +146,8 @@ a:visited{
 
 .boton-cancela-editar{
     appearance: auto;
-   
-  
+
+
     text-rendering: auto;
     letter-spacing: normal;
     word-spacing: normal;
@@ -166,6 +166,7 @@ a:visited{
     border-style: outset;
     border-image: initial;
     background-color: #EFEFEF;
+    cursor: pointer;
 }
 
 .formulario_editar_oculto{
@@ -174,8 +175,8 @@ a:visited{
 
 .boton-envia-editar{
     appearance: auto;
-   
-  
+
+
     text-rendering: auto;
     letter-spacing: normal;
     word-spacing: normal;
@@ -194,8 +195,16 @@ a:visited{
     border-style: outset;
     border-image: initial;
     background-color: #EFEFEF;
+    cursor: pointer;
+
 }
 
+.botones-productos-editar {
+    cursor: pointer;
+}
+.botones-productos-add{
+    cursor: pointer;
+}
 
 
 @media screen and (min-width: 992px){

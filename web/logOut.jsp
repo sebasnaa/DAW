@@ -24,9 +24,11 @@
 
 
             <%
-                String estadologOut = (String) (request.getAttribute("estadoLogOut"));
+
+                String nombre = (String) (request.getAttribute("nombre"));
+
             %>
-            Adios usuario <%= estadologOut%>
+            Hasta pronto <%= nombre %>
 
 
         </center>
