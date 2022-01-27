@@ -14,17 +14,14 @@ function quitarMensajeError(inputElement) {
     inputElement.parentElement.querySelector(".formulario_mensaje-error-entrada").textContent = "";
 }
 
-function nombreValido() {
+function nombreValido(destino) {
     nombreP = document.querySelector("#nombreP").value;
     $.ajax({
-        url: '/Bar/agregarProducto/bebida',
+        url: '/Bar/agregarProducto/comprobar' + destino,
         type: 'POST',
         data: {nombre: nombreP},
         success: function (resultText) {
-            const mess = document.getElementById("mensajeNombreExistente");
-            mess.innerHTML = resultText;
-            mess.innerHTML = 'hola sebas';
-
+            const mess = document.getElementById("mensajeNombreExistente").innerHTML = resultText;
         },
         error: function (jqXHR, exception) {
             console.log('Error!!');
@@ -35,12 +32,19 @@ function nombreValido() {
 
 }
 
-function validarFormularioCrearProducto(evento){
-    
-     evento.preventDefault();
-    
+function validarFormularioCrearProducto(evento) {
+
+    if (window.history.replaceState) { // verificamos disponibilidad
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+//    evento.preventDefault();
+
+
     let comprobacionNombre = document.getElementById('mensajeNombreExistente');
+    console.log(comprobacionNombre);
     if (comprobacionNombre.innerText.length > 0) {
+        console.log('ya existe');
         return;
     }
 
@@ -56,18 +60,18 @@ function validarFormularioCrearProducto(evento){
         mostrarMensajeError(precio, "Precio en blanco");
         return;
     }
-        quitarMensajeError(precio);
+    quitarMensajeError(precio);
 
     var descripcion = document.getElementById('descripcionP');
     if (descripcion.value.length == 0) {
         mostrarMensajeError(descripcion, "Descripcion en blanco");
         return;
     }
-        quitarMensajeError(descripcion);
+    quitarMensajeError(descripcion);
 
-    
-    
-    this.submit();
+
+
+//    this.submit();
 }
 
 

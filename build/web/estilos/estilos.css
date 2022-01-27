@@ -75,7 +75,8 @@ body {
 
 .container{
     max-width: 1400px;
-    height: 70vh;
+    
+    height: 75vh;
     width: 100vw;
     position: relative;
     box-shadow: 0 0 17pc rgb(207, 133, 133);
@@ -229,3 +230,5 @@ body {
 .boton-cerrar-sesion{
     background-color: #FFFFFF;
 }
+
+

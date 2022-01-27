@@ -35,14 +35,16 @@ public class loginOut extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        HttpSession session = request.getSession();
-        Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
         
+        
+        
+        HttpSession session = request.getSession();
+
+        Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
+
         String nombreUsuaiorLogOut = usuarioSesion.getNombre();
         session.removeAttribute("usuarioSesion");
-        
-        
-        
+
         String salida = "Logout correcto";
         request.setAttribute("estadoLogOut", salida);
         request.setAttribute("nombre", nombreUsuaiorLogOut);

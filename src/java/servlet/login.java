@@ -70,7 +70,9 @@ public class login extends HttpServlet {
 
         int estadoCreacionCuenta;
 
-        HttpSession session = request.getSession(true);
+//        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
+
         UsuarioDAO control = new UsuarioDAO();
         switch (accion) {
 
@@ -111,7 +113,7 @@ public class login extends HttpServlet {
                 Usuario usuarioSession = control.login(nombreUsuarioLog, passwordUsuarioLog);
 
                 if (usuarioSession != null) {
-                    session.setAttribute("usuarioSesion", usuarioSession);
+                    session.setAttribute("usuarioSesion", usuarioSession);                    
                     request.getRequestDispatcher("/validUserlogin.jsp").forward(request, response);
                 } else {
 //                    System.out.println("Entra en usuario no bueno");
@@ -126,10 +128,9 @@ public class login extends HttpServlet {
                 String entrada = request.getParameter("correo");
                 response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
                 response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-                if(control.comprobarUsuariounico(entrada)){
+                if (control.comprobarUsuariounico(entrada)) {
                     response.getWriter().write("existe correo/usuario");
                 }
-                
 
                 break;
 

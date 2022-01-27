@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : sebas
 */
 
+ html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body {
     
 
@@ -15,7 +21,7 @@ body {
     --colorP2:#ddbf74;
 
     margin: 0;
-    height: 100vh;
+    height: 105vh;
     display: flex;
     align-items: center;
     /*justify-content: center;*/
@@ -25,17 +31,21 @@ body {
     background-size: cover;
     display: flex;
     flex-direction: column;
+    
+    
+   
 }
 
-formulario_boton.containerLogin {
+
+.containerLogin {
     width: 400px;
     max-width: 400px;
-    margin: 1rem;
     padding: 2rem;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
     border-radius: 1%;
     background: #ffffff;
+    margin-top: 90px;
 }
 
 .containerLogin,
@@ -234,4 +244,61 @@ a {
 
 a:visited {
     color:black;
+}
+
+
+
+@media screen and (max-width: 426px){
+
+   
+    body{
+        height: 137vh;
+    }
+    
+    .container .menu ul li{
+        margin:auto;
+    }
+    .boton-nav{
+        padding: 12px 26px;
+    }
+    
+    .flex{
+        padding: 0;
+    }
+    
+    
+    
+.containerLogin {
+    width: 400px;
+    max-width: 400px;
+    padding: 0.5rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    border-radius: 1%;
+    background: #ffffff;
+    margin-top: 90px;
+}
+    
+
+
+.formulario_titulo{
+    margin: 0;
+    margin-top: 2%;
+}
+
+.formulario > *:first-child {
+    margin-top: 2%;
+}
+    
+
+.formulario_oculto {
+    display: none;
+}
+
+
+.formulario_boton{
+    width: 56%;
+        
+}
+
 }

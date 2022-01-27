@@ -32,6 +32,10 @@
             usuarioLogeado = true;
         }
     }
+
+    String tipoProducto = "bebida";
+    session.setAttribute("tipoProducto", tipoProducto);
+
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,8 +49,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../estilos/estilos.css">
         <link rel="stylesheet" href="../estilos/productos.css">
-
-        <title>Document</title>
+        <link rel="stylesheet" href="../estilos/queryMenu.css"/>
     </head>
     <body>
 
@@ -69,10 +72,9 @@
                     <!--                    <li class="boton-eleccion-menus">Comida</li>-->
                     <li class="boton-eleccion-menus"><a href="../menu/comidas">Comida</a></li>
                     <li class="boton-eleccion-menus">Cocteles</li>
-                        <%
-                            if (usuarioLogeado) {
+                        <%                            if (usuarioLogeado) {
+                        %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" > <a href="http://localhost:8080/Bar/agregarProducto.jsp">Añadir producto</a> </li> <%
                             }
-                            %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" > <a href="http://localhost:8080/Bar/agregarProducto.jsp">Añadir producto</a> </li> <%
 
                         %>
 

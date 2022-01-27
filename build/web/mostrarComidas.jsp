@@ -22,11 +22,15 @@
     Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
     boolean usuarioLogeado = false;
     if (usuarioSesion != null) {
-//        System.out.println(usuarioSesion);
+        System.out.println("usuario " + usuarioSesion.getNombre());
+
         if (usuarioSesion.getRol().equals("admin")) {
             usuarioLogeado = true;
         }
     }
+
+    String tipoProducto = "comida";
+    session.setAttribute("tipoProducto", tipoProducto);
 
 
 %>
@@ -44,7 +48,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../estilos/estilos.css">
         <link rel="stylesheet" href="../estilos/productos.css">
-
+        <link rel="stylesheet" href="../estilos/queryMenu.css"/>
         <title>Document</title>
     </head>
     <body>
@@ -67,11 +71,9 @@
                     <li class="boton-eleccion-menus" ><a href="../menu/bebidas">Refrescos</a></li>
                     <li class="boton-eleccion-menus">Comida</li>
                     <li class="boton-eleccion-menus">Cocteles</li>
-                        <%
-                            if (usuarioLogeado) {
-                            }
+                        <%                            if (usuarioLogeado) {
                         %> <li class="boton-eleccion-menus" class="boton-eleccion-menus-add" ><a href="http://localhost:8080/Bar/agregarProducto.jsp">Añadir producto</a></li> <%
-
+                            }
                         %>
                 </ul>
             </nav>
@@ -110,7 +112,7 @@
                                 <p id="descripcion<%=nombreObjetoClear%>" > <%= c.getDescripcion()%> </p>
                                 <div class="botones-productos">
 
-                                    <%        if (usuarioLogeado) {  %>                           
+                                    <%        if (usuarioLogeado) {%>                           
                                     <button class="botones-productos-editar" onclick="mostrarForm(' <%= c.getNombre()%>', ' <%= c.getPrecio()%>', ' <%= c.getDescripcion()%>');" >Editar</button>
                                     <% }%>
                                     <button class="botones-productos-add" onclick="addCarro('<%=nombre%>', '<%=p%>');" >añadir</button>
@@ -184,20 +186,20 @@
 
         </script>
 
-         <script>
-            
+        <script>
+
             function actualizarComida(nombreOriginal, nombreBusqueda) {
-                
+
                 var nombreMod = document.querySelector('.nombreProductoEditar_' + nombreBusqueda).value;
                 var precioMod = document.querySelector('.precioProductoEditar_' + nombreBusqueda).value;
                 var desMod = document.querySelector('.descProductoEditar_' + nombreBusqueda).value;
-      
+
                 $.ajax({
                     url: '/Bar/editarProducto/comida',
                     type: 'POST',
                     data: {nombreOriginal: nombreOriginal, nombreMod: nombreMod, precioMod: precioMod, desMod: desMod},
                     success: function (resultText) {
-                        
+
                         if (resultText === "mod") {
                             location.reload();
 //                            mostrarForm(nombreBusqueda);
@@ -206,18 +208,18 @@
 //                            document.getElementById("descripcion" + nombreBusqueda).innerText = desMod;
 //                            var nombreFoto = nombreMod.replaceAll(' ', '');
 //                            document.getElementById("imagen" + nombreBusqueda).src = "../images/productos/bebidas/" + nombreFoto + ".jpg";
-                            
+
                         }
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error!!');
-                        
+
                     }
                 });
             }
-            
-            
-            
+
+
+
         </script>
 
     </body>

@@ -28,7 +28,7 @@
     <meta charset="utf-8">
     <title>Acceso Cuenta / Crear Cuenta</title>
     <link rel="shortcut icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="estilos/estilos.css">
+    <!--<link rel="stylesheet" href="estilos/estilos.css">-->
     <link rel="stylesheet" href="estilos/loginCrearCuenta.css">
 </head>
 
@@ -46,13 +46,12 @@
                 <li class="boton-nav">Acceso</li>
                 <li class="boton-nav"> Contacto</li>
 
-                <%                    
-                    Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
+                <%                    Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
 //                    System.out.println("Usuario no log");
                     String cerrarBoton = "";
                     if (usuarioSesion != null) {
                 %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
-                               }
+                    }
 
                     %>
 
@@ -63,9 +62,6 @@
 
 
     <div class="containerLogin">
-        <!--action="login/Acceder"-->
-
-
 
 
         <div id ="estadoUsuario" > </div>
@@ -88,8 +84,8 @@
 
             <p class="formulario_texto">
                 <a href="#" class="formulario_link">¿Has olvidado la contraseña?</a>
-            </p>
 
+            </p>
             <p class="formulario_texto">
                 <a class="formulario_link" id="enlaceCrearCuenta">Crear Cuenta</a>
             </p>

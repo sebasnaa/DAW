@@ -3,6 +3,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,12 +38,18 @@
 
 
                     <%
+                        String permiso = (String) session.getAttribute("rol");
                         Usuario usuarioSesion = (Usuario) session.getAttribute("usuarioSesion");
-                        if (usuarioSesion != null) {
-                    %> <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> <%
-                        }
 
-                        String tipoProducto = "Bebida";
+                        if (usuarioSesion != null) {
+
+
+                    %>
+
+                    <li class="boton-nav boton-cerrar-sesion "  id="cerraSesion" ><a href="loginOut">Cerrar Sesion</a></li> 
+                        <%                            }
+
+                            String tipoProducto = (String) session.getAttribute("tipoProducto");
 
                         %>
 
@@ -50,14 +58,14 @@
 
 
             <div class="containerAgregar" >
-                <h1 class="formulario_titulo" style="text-decoration: underline"> <%=tipoProducto%> </h1>
+                <h1 class="formulario_titulo" style="text-transform: capitalize" >  <%=tipoProducto%> </h1>
                 <span id="mensajeNombreExistente" ></span>
-                <form class="formulario-agregar-producto" id="formulario-producto" enctype="multipart/form-data" action="agregarProducto/bebida" method="post">
+                <form class="formulario-agregar-producto" id="formulario-producto"  method="post" enctype="multipart/form-data" action="agregarProducto/<%= tipoProducto%>">
 
 
                     <div>
                         <label  for="nombreP" >Nombre </label>
-                        <input type="text" id="nombreP" oninput="nombreValido()" name="nombreProductoAgregar">
+                        <input type="text" id="nombreP" oninput="nombreValido('<%= tipoProducto%>')" name="nombreProductoAgregar">
                         <div class="formulario_mensaje-error-entrada"></div>
                     </div>
                     <div>
@@ -72,7 +80,6 @@
                     </div>
                     <div>
                         <label  for="imagenP" >Imagen</label>
-                        <!--accept="image/*"-->
                         <input type="file" id="imagenP"  name="imagenProductoAgregar">
                     </div>
                     <input class="formulario_boton" type="submit" value="Agregar">
@@ -83,9 +90,6 @@
             </div>
 
         </div>
-
-
-
 
     </body>
     <script src="js/jQuery.js"></script>
